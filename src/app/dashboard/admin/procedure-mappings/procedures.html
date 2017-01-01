@@ -1,0 +1,12 @@
+<div>
+        <h3>Procedures</h3>
+        <ng2-smart-table [settings]="store._settings" [source]="store._source" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onEditConfirm($event)" (createConfirm)="onCreateConfirm($event)"></ng2-smart-table>
+
+        <backend-smart-table [settings]="store._settings" [source]="store._source"></backend-smart-table>
+
+</div>
+
+<button (click) = "goBack()">Back</button>
+
+<procedure-detail [procedure] = "store._selected_procedure.getValue()"></procedure-detail>
+

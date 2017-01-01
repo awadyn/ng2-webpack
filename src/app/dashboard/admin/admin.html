@@ -1,0 +1,16 @@
+<h3>{{title}}</h3>
+<div>
+    <ul>            
+        <li><div><a routerLink = "/studio-users">Studio Users</a></div></li>
+        <li><div><a routerLink = "/studio-role-definitions">Studio Role Definitions</a></div></li>
+        <li><div><a routerLink = "/organizations">Organizations</a></div></li>
+        <li><div><a routerLink = "/packages">Packages</a></div></li>
+        <li><div><a routerLink = "/auth-and-security">Authentication and Security</a></div></li>
+        <li><div><a routerLink = "/procedures">Procedure Mapping</a></div></li>
+    </ul>
+</div>
+
+<button (click) = "goBack()">Back</button>
+
+<router-outlet></router-outlet>
+

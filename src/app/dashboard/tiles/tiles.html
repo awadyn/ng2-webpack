@@ -1,0 +1,29 @@
+<div>
+
+    <div>
+        <button (click) = "onSave()">Save</button>
+        <button (click) = "onNew()">New</button>
+        <button (click) = "onDelete()">Delete</button>
+    </div>
+
+    <div>
+        <label for="name">Name: </label>
+        <div [ngSwitch]="_store._selected_composite_index">
+                <div *ngSwitchCase="0 - 1">
+                        <input [value]="" (input)="onNameSet($event.target.value)" id="name" type="text" placeholder="Enter a Name">
+                </div>
+                <div *ngSwitchDefault>
+                    <input [value]="_store.selected_composite.metadata.identifiers.name" (input)="onNameChange($event.target.value)" id="name" type="text" placeholder="Enter a Name">
+                </div>
+        </div>
+    </div>
+
+    <div>
+        <basic-content (onSelected)="onSelected($event)"></basic-content>
+        <selected-content></selected-content>
+        <composite-content (onSelected)="onSelected($event)"></composite-content>
+    </div>
+
+    <button (click) = "goBack()">Back</button>
+</div>
+

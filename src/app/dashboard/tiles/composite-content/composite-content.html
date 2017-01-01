@@ -1,0 +1,7 @@
+<div>
+    <h3>Composite Content</h3>
+    <div *ngFor="let content of _store.composite_content | async" (click)="onSelect(content)">
+        {{ content.metadata.identifiers.name }}
+    </div>
+</div>
+

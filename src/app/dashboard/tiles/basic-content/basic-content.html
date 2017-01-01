@@ -1,0 +1,7 @@
+<div>
+    <h3> Basic Content </h3>
+    <div *ngFor="let content of _store.basic_content | async" (click)="onSelect(content)">
+        {{ content.metadata.identifiers.name }}
+    </div>
+</div>
+

@@ -1,51 +1,38 @@
-import './app.loader.ts';
-import { Component, ViewEncapsulation, ViewContainerRef } from '@angular/core';
-import { GlobalState } from './global.state';
-import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
-import { layoutPaths } from './theme/theme.constants';
-import { BaThemeConfig } from './theme/theme.config';
+/**
+ * AppComponent: root component
+ * component: controls a view through the associated template
+ * view: is a portion of the screen
+ */
 
-/*
- * App Component
- * Top Level Component
+import { Component } from '@angular/core';
+
+/**
+ *  decorator for root component
+ *  render AppComponent properties through the associated template
  */
 @Component({
-  selector: 'app',
-  encapsulation: ViewEncapsulation.None,
-  styles: [require('normalize.css'), require('./app.scss')],
-  template: `
-    <main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
-      <div class="additional-bg"></div>
-      <router-outlet></router-outlet>
-    </main>
-  `
+    selector: 'ili',
+    template: ` <div>
+                    <h1>{{title}}</h1>
+                    <dashboard></dashboard>
+                </div>
+                <router-outlet></router-outlet> `
 })
-export class App {
 
-  isMenuCollapsed: boolean = false;
+/**
+ *  defines any properties or methods that this component will be using
+ *  @property title: title of component
+ *  @property nav_options: list of navigation options
+ *  @property navigate_studio_users: option that sets navigation to 
+ *  show studio users
+ */
+export class AppComponent { 
+    title: string;
 
-  constructor(private _state: GlobalState,
-              private _imageLoader: BaImageLoaderService,
-              private _spinner: BaThemeSpinner,
-              private _config: BaThemeConfig,
-              private viewContainerRef: ViewContainerRef) {
-
-    this._loadImages();
-
-    this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
-      this.isMenuCollapsed = isCollapsed;
-    });
-  }
-
-  public ngAfterViewInit(): void {
-    // hide spinner once all loaders are completed
-    BaThemePreloader.load().then((values) => {
-      this._spinner.hide();
-    });
-  }
-
-  private _loadImages(): void {
-    // register some loaders
-    BaThemePreloader.registerLoader(this._imageLoader.load(layoutPaths.images.root + 'sky-bg.jpg'));
-  }
+    /**
+     *  @constructor
+     */
+    constructor() {
+        this.title = 'ILI';
+    }
 }

@@ -1,3 +1,5 @@
+// TODO(gdi2290): switch to DLLs
+
 // Polyfills
 
 // import 'ie-shim'; // Internet Explorer 9 support
@@ -31,6 +33,8 @@ import 'zone.js/dist/zone';
 // Typescript emit helpers polyfill
 import 'ts-helpers';
 
+
+/**
 if ('production' === ENV) {
   // Production
 
@@ -43,3 +47,5 @@ if ('production' === ENV) {
   require('zone.js/dist/long-stack-trace-zone');
 
 }
+**/
+

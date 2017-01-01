@@ -1,0 +1,56 @@
+<div>
+        <h2>Users</h2>
+        <div>
+            <ul>
+                <li><label>First Name:</label><input #first_name /></li>
+                <li><label>Last Name:</label><input #last_name /></li>
+                <li><label>Role:</label><input #role /></li>
+                <li><label>Email:</label><input #email /></li>
+                <li><label>Password:</label><input #password /></li>
+                <button (click) = "addStudioUser(first_name.value, last_name.value, role.value, email.value, password.value); first_name.value = ''; last_name.value = ''; role.value = ''; email.value = ''; password.value = ''">Add User </button>
+            </ul>
+        </div>    
+
+
+        <div>
+            <label>Search: </label><input #user_name type="text" value="" (keyup)="searchStudioUsers(user_name.value)">
+            <ul>
+                    <!--                    <li *ngFor = "let result of search_results | async">bla</li> -->
+                    <li *ngFor = "let user of store.studio_users | async">
+                        <div><label>First Name: </label>{{user.first_name}}</div>
+                        <div><label>Last Name: </label>{{user.last_name}}</div>
+                        <div><label>Role: </label>{{user.role}}</div>
+                        <div><label>Email: </label>{{user.email}}</div>
+                        <div><label>Password: </label>****</div>
+                        <div><label>Pin: </label>{{user.pin}}</div>
+                        <button (click) = "onSelect(user)">See More</button>
+                        <button (click) = "deleteStudioUser(user.id)">Delete User</button>
+                    </li>
+            </ul>
+        </div>
+
+<!--
+        <div>
+            <ul>
+                <li *ngFor = "let user of users" (click) = "onSelect(user)">
+                    <div><label>First Name: </label>{{user.first_name}}</div>
+                    <div><label>Last Name: </label>{{user.last_name}}</div>
+                    <div><label>Role: </label>{{user.role}}</div>
+                    <div><label>Email: </label>{{user.email}}</div>
+                    <div><label>Password: </label>****</div>
+                    <div><label>Pin: </label>{{user.pin}}</div>
+                    <button (click) = "deleteStudioUser(user.id)">Delete User</button>
+                 </li>
+            </ul>
+    </div>
+-->
+</div>
+<!--
+<router-outlet></router-outlet>
+-->
+
+<button (click) = "goBack()">Back</button>
+
+<user_detail [user] = "store._selected_user.getValue()"></user_detail>
+
+

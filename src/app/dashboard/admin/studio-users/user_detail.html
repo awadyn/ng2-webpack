@@ -1,0 +1,14 @@
+<div *ngIf = "user">
+    <h2>{{user.first_name}} details!</h2>
+    <div><label>First Name: </label><input [(ngModel)]="user.first_name"></div>
+    <div><label>Last Name: </label><input [(ngModel)]="user.last_name"></div>
+    <div><label>Role: </label><input [(ngModel)]="user.role"></div>
+    <div><label>Email: </label><input [(ngModel)]="user.email"></div>
+    <div><label>Password: </label><input [(ngModel)]="user.password" type="password"></div>
+    <div><label>Pin: </label>{{user.pin}}</div>
+
+    <button (click) = "saveStudioUser()">Save Changes</button>
+    <button (click) = "goBack()">Back</button>
+</div>
+
+

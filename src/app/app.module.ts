@@ -1,95 +1,61 @@
-import { NgModule, ApplicationRef } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
-import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-
-/*
- * Platform and Environment providers/directives/pipes
- */
-import { ENV_PROVIDERS } from './environment';
-import { routing } from './app.routing';
-
-// App is our top level component
-import { App } from './app.component';
-import { AppState, InternalStateType } from './app.service';
-import { GlobalState } from './global.state';
-import { NgaModule } from './theme/nga.module';
-import { PagesModule } from './pages/pages.module';
-
-// Application wide providers
-const APP_PROVIDERS = [
-  AppState,
-  GlobalState
-];
-
-type StoreType = {
-  state: InternalStateType,
-  restoreInputValues: () => void,
-  disposeOldHosts: () => void
-};
-
 /**
- * `AppModule` is the main entry point into Angular2's bootstraping process
+ * root module
+ * entry point to application
  */
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
+
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
+import { AppComponent } from './app.component';
+import { WelcomeComponent } from './welcome.component';
+
+import { AppRoutingModule } from './app-routing.module';
+
+import { DashboardModule } from './dashboard/dashboard.module';
+import { AdminModule } from './dashboard/admin/admin.module';
+import { StudioUsersModule } from './dashboard/admin/studio-users/studio-users.module';
+import { OrganizationsModule } from './dashboard/admin/organizations/organizations.module';
+import { ProceduresModule } from './dashboard/admin/procedure-mappings/procedures.module';
+import { TilesModule } from './dashboard/tiles/tiles.module';
+
+import { BasicContentModule } from './dashboard/tiles/basic-content/basic-content.module';
+import { SelectedContentModule } from './dashboard/tiles/selected-content/selected-content.module';
+import { CompositeContentModule } from './dashboard/tiles/composite-content/composite-content.module';
+
+import { BackendSmartTableModule } from './dashboard/admin/procedure-mappings/backend-smart-table/backend-smart-table.module';
+
 @NgModule({
-  bootstrap: [App],
-  declarations: [
-    App
-  ],
-  imports: [ // import Angular's modules
-    BrowserModule,
-    HttpModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgaModule.forRoot(),
-    PagesModule,
-    routing
-  ],
-  providers: [ // expose our Services and Providers into Angular's dependency injection
-    ENV_PROVIDERS,
-    APP_PROVIDERS
-  ]
+    imports: [
+            BrowserModule,
+            FormsModule,
+            HttpModule,
+            InMemoryWebApiModule.forRoot(InMemoryDataService),
+            DashboardModule,
+            AdminModule,
+            StudioUsersModule,
+            OrganizationsModule,
+            ProceduresModule,
+            TilesModule,
+            BasicContentModule,
+            SelectedContentModule,
+            CompositeContentModule,
+            AppRoutingModule,
+            BackendSmartTableModule
+    ],
+    declarations: [
+            AppComponent,
+            WelcomeComponent
+    ],
+    /**
+     * AppComponent: the main application view that hosts all other views
+     */
+    bootstrap: [AppComponent]
 })
 
-export class AppModule {
-
-  constructor(public appRef: ApplicationRef, public appState: AppState) {
-  }
-
-  hmrOnInit(store: StoreType) {
-    if (!store || !store.state) return;
-    console.log('HMR store', JSON.stringify(store, null, 2));
-    // set state
-    this.appState._state = store.state;
-    // set input values
-    if ('restoreInputValues' in store) {
-      let restoreInputValues = store.restoreInputValues;
-      setTimeout(restoreInputValues);
-    }
-    this.appRef.tick();
-    delete store.state;
-    delete store.restoreInputValues;
-  }
-
-  hmrOnDestroy(store: StoreType) {
-    const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
-    // save state
-    const state = this.appState._state;
-    store.state = state;
-    // recreate root elements
-    store.disposeOldHosts = createNewHosts(cmpLocation);
-    // save input values
-    store.restoreInputValues = createInputTransfer();
-    // remove styles
-    removeNgStyles();
-  }
-
-  hmrAfterDestroy(store: StoreType) {
-    // display new elements
-    store.disposeOldHosts();
-    delete store.disposeOldHosts;
-  }
-}
+export class AppModule { }

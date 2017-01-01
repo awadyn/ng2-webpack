@@ -1,0 +1,11 @@
+<div>
+    <h3>Selected Content</h3>
+    <div *ngFor="let content of _store.selected_content | async">
+        <ul>
+            <li>Content Name: {{content.metadata.identifiers.name}}</li>
+            <li>Time Created: {{content.metadata.identifiers.time_created}}</li>
+            <li>Content ID: {{content.id}}</li>
+        </ul>
+    </div>
+</div>
+

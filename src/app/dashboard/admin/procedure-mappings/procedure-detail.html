@@ -1,0 +1,16 @@
+<div *ngIf = "procedure">
+        <h2>{{procedure.first_name}}:</h2>
+        <div> <label>First Name:</label><input [(ngModel)]="procedure.first_name"/></div>   
+        <div><label>Last Name:</label><input [(ngModel)]="procedure.last_name"/></div>
+        <div><label>Email:</label><input [(ngModel)]="procedure.email"/></div>
+        <div><label>Gender:</label><input [(ngModel)]="procedure.gender"/></div>
+        <div><label>Birthday:</label><input [(ngModel)]="procedure.birthday"/></div>
+        <div><label>Phone:</label><input [(ngModel)]="procedure.phone"/></div>
+        <div><label>Zip:</label><input [(ngModel)]="procedure.zip"/></div>
+        <div><label>Notes:</label><input [(ngModel)]="procedure.notes"/></div>
+        <div><label>HSR:</label><input [(ngModel)]="procedure.hsr"/></div>
+    
+    <button (click) = "saveProcedure()">Save Changes</button>
+    <button (click) = "goBack()">Back</button>
+</div>
+

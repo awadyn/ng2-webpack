@@ -1,0 +1,10 @@
+<div *ngIf = "organization">
+        <h2>{{organization.name}}:</h2>
+    <div><label>Name: </label><input [(ngModel)]="organization.name"></div>
+    <div><label>Type: </label><input [(ngModel)]="organization.type"></div>
+    <div><label>Package: </label><input [(ngModel)]="organization.package"></div>
+    
+    <button (click) = "saveOrganization()">Save Changes</button>
+    <button (click) = "goBack()">Back</button>
+</div>
+

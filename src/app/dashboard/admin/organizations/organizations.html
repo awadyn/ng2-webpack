@@ -1,0 +1,32 @@
+<div>
+        <h2>Organizations</h2>
+        <div>
+            <ul>
+                <li><label>Name:</label><input #name /></li>
+                <li><label>Type:</label><input #type /></li>
+                <li><label>Package:</label><input #package /></li>
+                <button (click) = "addOrganization(name.value, type.value, package.value); name.value = ''; type.value = ''; package.value = ''">Add Organization </button>
+
+            </ul>
+        </div>    
+
+
+        <div>
+<!--            <label>Search: </label><input #org_name type="text" value="" (keyup)="searchOrganizations(org_name.value)">
+-->            <ul>
+                    <li *ngFor = "let organization of store.organizations | async">
+                        <div><label>Name: </label>{{organization.name}}</div>
+                        <div><label>Type: </label>{{organization.type}}</div>
+                        <div><label>Package: </label>{{organization.package}}</div>
+                        <button (click) = "onSelect(organization)">See More</button>
+                        <button (click) = "deleteOrganization(organization.id)">Delete Organization</button>
+                    </li>
+            </ul>
+        </div>
+
+</div>
+
+<button (click) = "goBack()">Back</button>
+
+<organization-detail [organization] = "store._selected_organization.getValue()"></organization-detail>
+
