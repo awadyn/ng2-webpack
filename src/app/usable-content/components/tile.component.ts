@@ -9,6 +9,7 @@ import { UsableContent } from '../usable-content';
                     <div>
                         <ul>
                             <li>{{content.type}}</li>
+                            <li>{{content.metadata.identifiers.name}}</li>
                             <li>{{content.id}}</li>
                             <li>{{content.metadata.identifiers.time_created}}</li>
                         </ul>

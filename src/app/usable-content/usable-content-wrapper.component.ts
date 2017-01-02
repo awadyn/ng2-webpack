@@ -33,7 +33,11 @@ export class UsableContentWrapper {
      */
     onSelected(selected_content: UsableContent) {
         console.log('Parent calling store onSelect...');
-        this._store.onSelect(selected_content);
+        if (selected_content.getType() === "basic")
+                this._store.onSelectBasic(selected_content);
+        else
+                if (selected_content.getType() === "composite")
+                        this._store.onSelectComposite(selected_content);
     }
 
 

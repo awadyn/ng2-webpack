@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UsableContentModule } from '../../usable-content/usable-content.module';
 import { UsableContentStore } from '../../usable-content/usableContentStore';
+import { EventsStore } from './eventsStore';
 import { UsableContentBackend } from '../../usable-content/usableContentBackend.service';
 
 import { EventsWrapper } from './events-wrapper.component';
@@ -32,6 +33,7 @@ import { SelectedTiles } from './components/selected-tiles.component';
     ],
     providers: [
         UsableContentStore,
+        EventsStore,
         UsableContentBackend
     ]
 })

@@ -1,10 +1,13 @@
 <div>
 
+    
     <div>
         <button (click) = "onSave()">Save</button>
         <button (click) = "onNew()">New</button>
         <button (click) = "onDelete()">Delete</button>
     </div>
+
+
     <div>
         <label for="name">Name: </label>
         <div [ngSwitch]="_store._selected_composite_index">
@@ -16,6 +19,8 @@
                 </div>
         </div>
     </div>
+
+
     <div>
             <h3>Tiles</h3>
             <tiles [contentStream]="_store.basic_content" (onSelected)="onSelected($event)"></tiles>
@@ -26,5 +31,7 @@
             <h3>Events</h3>
             <events [contentStream]="_store.composite_content" (onSelected)="onSelected($event)"></events>
     </div>
+
+
 </div>
 
