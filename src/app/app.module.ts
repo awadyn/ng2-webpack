@@ -24,9 +24,15 @@ import { OrganizationsModule } from './dashboard/admin/organizations/organizatio
 import { ProceduresModule } from './dashboard/admin/procedure-mappings/procedures.module';
 import { TilesModule } from './dashboard/tiles/tiles.module';
 
+
+//import { UsableContentModule } from './usable-content/usable-content.module';
+import { EventsModule } from './dashboard/events/events.module';
+
+
 import { BasicContentModule } from './dashboard/tiles/basic-content/basic-content.module';
 import { SelectedContentModule } from './dashboard/tiles/selected-content/selected-content.module';
 import { CompositeContentModule } from './dashboard/tiles/composite-content/composite-content.module';
+ 
 
 import { BackendSmartTableModule } from './dashboard/admin/procedure-mappings/backend-smart-table/backend-smart-table.module';
 
@@ -42,6 +48,10 @@ import { BackendSmartTableModule } from './dashboard/admin/procedure-mappings/ba
             OrganizationsModule,
             ProceduresModule,
             TilesModule,
+
+//            UsableContentModule,
+            EventsModule,
+
             BasicContentModule,
             SelectedContentModule,
             CompositeContentModule,

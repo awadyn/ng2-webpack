@@ -1,0 +1,20 @@
+<div>
+        <label for="search-box">Search</label>
+        <input id="search-box" type="text" placeholder="Enter Search Term" (input)="onSearch($event.target.value)">
+</div>
+
+<div>
+        <label for="sort-box">Sort</label>
+        <select (change)="onSort($event.target.value)">
+                <option value="" disabled selected>Sort by</option>
+                <option *ngFor="let option of sortOptions" value="{{option.title}}">{{option.title}}</option>
+        </select>
+</div>
+
+<div>
+        <div *ngFor="let content of contentStream | async" (click)="onSelect(content)">
+                <usable-content-thumbnail [title]="content.metadata.identifiers.name" [image]=""></usable-content-thumbnail>
+        </div>
+</div>
+
+

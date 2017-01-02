@@ -1,0 +1,11 @@
+<h3>Selected Content</h3>
+<div>
+        <div *ngFor="let content of contentStream | async">
+            <ul>
+                <li>Content Type: {{content.type}}</li>
+                <li>Content ID: {{content.id}}</li>
+                <li>Time Created: {{content.metadata.identifiers.time_created}}</li>
+            </ul>
+        </div>
+</div>
+

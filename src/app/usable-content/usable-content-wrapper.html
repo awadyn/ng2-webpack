@@ -1,0 +1,14 @@
+<div>
+
+    <div>
+        <button (click) = "onSave()">Save</button>
+        <button (click) = "onNew()">New</button>
+        <button (click) = "onDelete()">Delete</button>
+    </div>
+    <div>
+        <usable-content [contentStream]="_store.basic_content" (onSelected)="onSelected($event)"></usable-content>
+        <selected-content [contentStream]="_store.selected_content"></selected-content>
+        <usable-content [contentStream]="_store.composite_content" (onSelected)="onSelected($event)"></usable-content>
+    </div>
+</div>
+
