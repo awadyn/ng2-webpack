@@ -60,6 +60,7 @@ export class UsableContentStore {
         console.log('Store onSelect...');
         if (selected_content.getType() == 'basic') {
             this._selected_content.getValue().push(selected_content);
+            console.log('selected_content: ', this._selected_content.getValue());
             this._edited = true;
         } else {
             //TODO may add more than one composite type

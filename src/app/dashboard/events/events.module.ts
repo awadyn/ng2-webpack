@@ -9,8 +9,8 @@ import { EventsWrapper } from './events-wrapper.component';
 import { EventsRoutingModule } from './events-routing.module';
 
 import { Tiles } from './components/tiles.component';
-
-
+import { Events } from './components/events.component';
+import { SelectedTiles } from './components/selected-tiles.component';
 
 @NgModule({
     imports: [
@@ -20,11 +20,15 @@ import { Tiles } from './components/tiles.component';
     ],
     exports: [
         EventsWrapper,
-        Tiles
+        Tiles,
+        Events,
+        SelectedTiles
     ],
     declarations: [
         EventsWrapper,
-        Tiles
+        Tiles,
+        Events,
+        SelectedTiles
     ],
     providers: [
         UsableContentStore,

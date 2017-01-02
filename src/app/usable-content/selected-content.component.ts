@@ -14,11 +14,6 @@ export class SelectedContentComponent {
 
     @Input() contentStream: Observable<UsableContent[]>;
 
-    /**
-     *  @constructor
-     */
-    constructor() {
-    }
 
 
 }

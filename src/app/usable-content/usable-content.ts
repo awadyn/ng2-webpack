@@ -23,6 +23,9 @@ export class UsableContent {
         other: any
     };
 
+
+
+
     /**
      *  @constructor
      */
@@ -32,6 +35,9 @@ export class UsableContent {
         this.id = id;
         this.metadata = metadata;
     }
+
+
+
 
     /**
      *  getters and setters

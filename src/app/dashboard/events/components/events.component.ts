@@ -6,11 +6,11 @@ import { UsableContent } from '../../../usable-content/usable-content';
 import { UsableContentComponent } from '../../../usable-content/usable-content.component';
 
 @Component({
-    selector: 'tiles',
+    selector: 'events',
     templateUrl: '../../../usable-content/usable-content.html'
 })
 
-export class Tiles extends UsableContentComponent {
+export class Events extends UsableContentComponent {
 
         @Input() contentStream: Observable<UsableContent[]>; 
         @Output() onSelected = new EventEmitter<UsableContent>();
@@ -23,6 +23,7 @@ export class Tiles extends UsableContentComponent {
         constructor() {
             super();
             //TODO PASS BY VALUE?
-            this.sortOptions = [{title: 'Time Created', identifier: 'time_created'}, {title: 'Name', identifier: 'name'}, {title: 'Category', identifier: 'category'}, {title: 'Author', identifier: 'author'}];
+            this.sortOptions = [{title: 'Time Created', identifier: 'time_created'}, {title: 'Name', identifier: 'name'}, {title: 'Type', identifier: 'type'}];
         }
 }
+

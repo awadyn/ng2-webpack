@@ -19,8 +19,12 @@
     <div>
             <h3>Tiles</h3>
             <tiles [contentStream]="_store.basic_content" (onSelected)="onSelected($event)"></tiles>
-            <selected-content [contentStream]="_store.selected_content"></selected-content>
-           <usable-content [contentStream]="_store.composite_content" (onSelected)="onSelected($event)"></usable-content>
+
+            <h3>Selected Tiles</h3>
+            <selected-tiles [contentStream]="_store.selected_content"></selected-tiles>
+
+            <h3>Events</h3>
+            <events [contentStream]="_store.composite_content" (onSelected)="onSelected($event)"></events>
     </div>
 </div>
 
